@@ -1,0 +1,984 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>HW_1 / 19101787 이상훈</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="d3b52619-36e7-4a26-b720-aa7a30ead025" class="page sans"><header><h1 class="page-title">HW_1 / 19101787 이상훈</h1><p class="page-description"></p></header><div class="page-body"><h2 id="b836f386-4c39-4127-8239-c848cffd8f51" class="">P1.</h2><p id="7a8eae74-1dc8-4c38-a224-800c4645df3c" class="">(성능평가) 코로나 감염여부를 측정하는 방법으로 체온을 이용한다고 하다. 체온이 일정 수치 T 이상이면 코로나 감염으로 그렇지 않으면 정상인것으로 판단한다고 하자. 이 검사에 참가한 사람들 중 p 의 비율로 환자가,  1- p 의 비율로 정상인이 포함되어 있다고 가정하자.  환자는 체온 40도를 기준으로 표준편차 5의 정규분포를 따른다고 하고, 정상인은 35도를 기준으로 표준 편차 5의 정규분포를 따른다고 하자. 즉, 전체 확률 분포의 그림은 다음과 같은 형태를 띠게 될 것이다.</p><p id="8e0e29ef-1dc6-4367-be9c-5b606652f443" class="">
+</p><ol type="1" id="cb798605-8b66-499c-964e-a25ef6f6ff5d" class="numbered-list" start="1"><li> p = 0.5 인 경우 임의로 100명을 모집했을 때 (즉, 50명 씩) 두 집단의 체온을 정규 분포에 따라 랜덤 넘버를 생성하라.<p id="8bcd901d-069f-4cdd-b32d-a494731d383d" class="">(참고: <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html">https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html</a>)</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f220f054-46cf-4635-aefb-72a1ab391609" class="code"><code class="language-Python">p=0.5, body temperature :
+ [30.20164938 30.43359878 31.18479922 31.37541084 32.60739005 32.87625907
+ 32.93848149 33.35906976 33.89578175 34.24503211 34.71144536 34.9358444
+ 35.45987962 36.40077896 36.99146694 36.99680655 37.18856235 37.27808638
+ 37.65262807 37.67135123 37.68291154 37.69680615 38.49448152 38.54153125
+ 38.82923313 38.82931522 38.8711185  39.30867849 39.42175859 39.93251388
+ 40.33764102 40.55461295 40.85684141 40.98430618 41.04431798 41.20981136
+ 41.57123666 41.71809145 41.87849009 42.48357077 42.71280022 43.23844269
+ 43.6923329  43.83717365 44.11272456 45.28561113 47.32824384 47.61514928
+ 47.89606408 49.26139092 21.90127448 25.06215543 27.68242526 29.01896688
+ 29.46832513 30.80391238 30.95753199 31.48973453 31.61539    31.77440123
+ 32.35119898 32.40864891 32.49121478 32.60412881 33.03945923 33.0745886
+ 33.36168927 33.45393812 33.50496325 33.82706433 33.90164056 34.07170512
+ 34.63994939 34.8208698  35.02556728 35.43523534 35.45880388 35.48538775
+ 36.30527636 36.48060139 36.62041985 36.64375555 36.65631716 36.78556286
+ 36.80697803 36.80818013 37.56633717 38.05838144 39.06262911 39.10951252
+ 39.57701059 39.6564006  39.84322495 39.87772564 40.01766449 40.15499761
+ 41.78120014 42.38947022 42.69018283 42.82321828] 
+ status[positive(covid)=1, negative(not covid)=0] :
+ [1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0.]</code></pre></li></ol><ol type="1" id="913bc639-a4ce-4a75-85c1-671e82b2c808" class="numbered-list" start="2"><li> T 가 … 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, … 일 때의 혼동 매트릭스를 생성하라. 즉 TP, FP, TN, FN 를 각각 계산하라. (여기서 positive는 감염을 의미한다)<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="691c0dd5-b3fe-495c-889d-5758856088b9" class="code"><code class="language-Python">p=0.5, Confusion matrix :
+ [[[ 5 45]
+  [ 0 50]]
+
+ [[12 38]
+  [ 1 49]]
+
+ [[15 35]
+  [ 2 48]]
+
+ [[16 34]
+  [ 5 45]]
+
+ [[19 31]
+  [ 8 42]]
+
+ [[21 29]
+  [10 40]]
+
+ [[25 25]
+  [14 36]]
+
+ [[33 17]
+  [15 35]]
+
+ [[37 13]
+  [18 32]]
+
+ [[41  9]
+  [20 30]]]</code></pre></li></ol><figure id="11169184-8a84-49b1-bbac-a93763061383" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled.png"><img style="width:432px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled.png"/></a></figure><ol type="1" id="d934960e-2644-41e3-9c95-57007f409ea8" class="numbered-list" start="3"><li>위 결과를 사용하여 ROC를 그려라. </li></ol><figure id="3e6ccac7-4c86-4030-8681-4f2fb8607f3a" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%201.png"><img style="width:432px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%201.png"/></a></figure><ol type="1" id="0150c585-01eb-438a-8276-8855a72d5a88" class="numbered-list" start="4"><li>p = 0.2 인 경우에 대하여 위의 과정을 반복하여 보라.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5a9612d8-47fb-461f-ab2e-fe9570d68925" class="code"><code class="language-Python">p=0.2, body temperature :
+ [35.85502495 37.04214306 37.1990948  38.44866622 38.91159398 38.98903674
+ 39.34928473 39.89549203 40.10501921 40.58663692 41.62083176 42.73548691
+ 43.05185133 43.40976486 43.73646803 44.06754818 44.12708174 45.49388426
+ 46.38832448 46.52739404 24.38052138 26.43432735 27.75957829 27.96268113
+ 28.39883396 28.92905694 29.96991309 29.98735318 30.50792664 30.51372814
+ 30.80139079 30.86384528 30.87251402 30.88889802 30.90889658 30.95850857
+ 31.13495108 31.16326219 31.20433669 31.40777889 31.61419144 32.00303677
+ 32.11548172 32.18137724 32.37122489 32.46528412 32.64480847 32.65412174
+ 32.99389764 33.39307079 33.55670681 33.93276424 34.20030735 34.26471309
+ 34.42730077 34.45619926 34.90491896 34.90743432 34.93876614 35.062962
+ 35.12255087 35.37902279 35.48497982 35.48838049 35.75196893 35.91671003
+ 36.12046241 36.16024969 36.21843606 36.22483286 36.55453783 36.6135928
+ 36.70877988 37.00855861 37.06465727 37.45959586 37.48999146 37.59673257
+ 37.97578513 38.12059909 38.14172755 38.45071996 38.95831347 39.28829812
+ 39.36160318 39.75211919 39.79635413 39.87559867 40.79055437 40.8972006
+ 41.18908156 41.76936187 42.25571804 42.37678108 42.66369457 44.15729383
+ 44.3808542  45.46193638 45.76591229 45.94901467] 
+ status[positive(covid)=1, negative(not covid)=0] :
+ [1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 0. 0. 0. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0.]
+
+p=0.2, Confusion matrix :
+ [[[17 63]
+  [ 0 20]]
+
+ [[23 57]
+  [ 0 20]]
+
+ [[27 53]
+  [ 0 20]]
+
+ [[32 48]
+  [ 2 18]]
+
+ [[37 43]
+  [ 2 18]]
+
+ [[46 34]
+  [ 4 16]]
+
+ [[49 31]
+  [ 4 16]]
+
+ [[54 26]
+  [ 5 15]]
+
+ [[57 23]
+  [ 7 13]]
+
+ [[63 17]
+  [ 7 13]]]</code></pre></li></ol><figure id="559d2b89-94f4-40b7-a2c4-63f314d665d0" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%202.png"><img style="width:432px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%202.png"/></a></figure><figure id="5476bb1e-9e66-49d9-9d83-51127a4d527d" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%203.png"><img style="width:432px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%203.png"/></a></figure><p id="c5ba4dc4-c9fe-4d80-b055-cce33a72ec2a" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9ab05805-0de8-41c3-948d-6eb5160b6506" class="code"><code class="language-Python">import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, roc_curve, auc
+import seaborn as sns
+
+
+class P1:
+    def __init__(self, mean_covid=40, std_covid=5, mean_normal=35, std_normal=5, p=0.5, n_samples=100):
+        self.mean_normal = mean_normal
+        self.std_normal = std_normal
+        self.mean_covid = mean_covid
+        self.std_covid = std_covid
+        self.p = p
+        self.n_samples = n_samples
+
+    def make_dataset(self):
+        covid_temps = np.sort(np.random.normal(self.mean_covid, self.std_covid,
+                                               int(self.n_samples * self.p)))
+        normal_temps = np.sort(np.random.normal(self.mean_normal, self.std_normal,
+                                                int(self.n_samples * (1 - self.p))))
+
+        data = np.concatenate([covid_temps, normal_temps])
+        labels = np.concatenate([np.ones_like(covid_temps), np.zeros_like(normal_temps)])
+
+        return data, labels
+
+    def make_confusion_matrix(self, threshold=35):
+        data, labels = self.make_dataset()
+        y_pred = [1 if temp &gt; threshold else 0 for temp in data]
+        cm = confusion_matrix(labels, y_pred)
+
+        group_names = [&quot;TP&quot;, &quot;FN&quot;, &quot;FP&quot;, &quot;TN&quot;]
+        group_counts = [value for value in cm.flatten()]
+        group_percentages = [f&quot;{value:.1%}&quot; for value in cm.flatten() / np.sum(cm)]
+        labels = [f&quot;{v1}\n{v2}\n({v3})&quot; for v1, v2, v3 in zip(group_names, group_counts, group_percentages)]
+
+        labels = np.asarray(labels).reshape(2, 2)
+
+        sns.heatmap(cm, annot=labels, fmt=&#x27;&#x27;, cmap=&#x27;Blues&#x27;)
+        plt.xlabel(&#x27;Predicted Value&#x27;)
+        plt.ylabel(&#x27;True Value&#x27;)
+        plt.title(&#x27;Confusion matrix T={0}&#x27;.format(threshold))
+        plt.show()
+
+
+    def make_roc_curve(self):
+        all_temps, all_labels = self.make_dataset()
+
+        fpr, tpr, thresholds = roc_curve(all_labels, all_temps)
+
+        roc_auc = auc(fpr, tpr)
+
+        plt.plot(fpr, tpr, color=&#x27;darkorange&#x27;, lw=2, label=&#x27;ROC curve (area = %0.2f)&#x27; % roc_auc)
+        plt.plot([0, 1], [0, 1], color=&#x27;navy&#x27;, lw=2, linestyle=&#x27;--&#x27;)
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel(&#x27;False Positive Rate&#x27;)
+        plt.title(&#x27;ROC(p = {0})&#x27;.format(self.p))
+        plt.legend(loc=&quot;lower right&quot;)
+        plt.show()
+
+
+np.random.seed(42)
+
+a = P1()
+temp_p5, label_p5 = a.make_dataset()
+print(&#x27;p=0.5, body temperature :\n&#x27;, temp_p5, &#x27;\n status[positive(covid)=1, negative(not covid)=0] :\n&#x27;, label_p5)
+a.make_confusion_matrix(threshold=38)
+a.make_roc_curve()
+
+b = P1(p=0.2)
+temp_p2, label_p2 = b.make_dataset()
+print(&#x27;\np=0.2, body temperature :\n&#x27;, temp_p2, &#x27;\n status[positive(covid)=1, negative(not covid)=0] :\n&#x27;, label_p2)
+b.make_confusion_matrix(threshold=38)
+b.make_roc_curve()</code></pre><p id="90f6ab42-678a-49a2-bd1d-a28cbda30d51" class="">
+</p><h2 id="cdb0de77-1f09-471f-bc43-6f589176a9b1" class="">P2. </h2><p id="1c4f6f86-2c02-4997-87bb-fa768a89e237" class="">[이미지포맷] 실습에서 사용한 imwrite 함수를 사용한 png와 jpeg 저장에 대하여 좀 더 공부해보자.</p><ol type="1" id="a7aa0c81-e707-48ea-9641-628dd36dc340" class="numbered-list" start="1"><li>IMWRITE_PNG_COMPRESSION 옵션에 대하여 조사하고 옵션값을 변화시키면서 결과를 확인 해보라. 그 결과에 대하여 설명하라.<ul id="cfc8474c-673b-476e-985b-e1ee5ad4db75" class="bulleted-list"><li style="list-style-type:disc">OpenCV 문서에 따르면 IMWRITE_PNG_COMPRESSION옵션은 PNG로 저장을 할 때 얼마나 압축할 것인지 결정한다. 범위는 0~9(값이 클수록 더 압축이 되고 처리 속도가 더 길어진다.), default=1로 되어있다.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6aed72de-1061-4181-996f-9de11b8c9b1f" class="code"><code class="language-Python">cv2.imwrite(&#x27;Lena1.png&#x27;, img, [cv2.IMWRITE_PNG_COMPRESSION, 9])</code></pre><figure id="e2ac8ba4-37be-4a72-8c47-0b987ce356af" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%204.png"><img style="width:707.9971313476562px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%204.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fc34aba7-a103-47d8-a814-c3baaf5089a5" class="code"><code class="language-Python">cv2.imwrite(&#x27;Lena1.png&#x27;, img, [cv2.IMWRITE_PNG_COMPRESSION, 1])</code></pre><figure id="738a4ad3-3a09-4c89-bf06-2f75b4a06e9a" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%205.png"><img style="width:707.9971313476562px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%205.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9a2d449a-cb5c-421c-8df2-fbc51085882c" class="code"><code class="language-Python">cv2.imwrite(&#x27;Lena1.png&#x27;, img, [cv2.IMWRITE_PNG_COMPRESSION, 0])</code></pre><figure id="bbbf2e8b-5346-4551-9adc-137c42791f68" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%206.png"><img style="width:1336px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%206.png"/></a></figure></li></ul><ul id="fef1bf0b-89d9-438c-b9c9-a5fb9a4343ef" class="bulleted-list"><li style="list-style-type:disc">값이 적을 수록 용량이 커진다. 그만큼 압축이 덜 된다는 이야기지만 .png라는 이미지 format이 무손실 압축을 지원하고 고해상도의 이미지를 지원하기 때문에 육안으로 차이를 인식하긴 어렵다.</li></ul><p id="7ecff9fa-9e16-4e62-9097-7bf49c84ad76" class="">
+</p></li></ol><ol type="1" id="88e96401-d18b-44ea-a9c5-4ef1294f44e3" class="numbered-list" start="2"><li>IMWRITE_JPEG_QUALITY 옵션에 대하여 조사하고 옵션값을 변화시키면서 결과를 확인 해보라. 그 결과에 대하여 설명하라.<ul id="14490535-55fd-4a68-96bf-0427f5bcd4fb" class="bulleted-list"><li style="list-style-type:disc">OpenCV 문서에 따르면 IMWRITE_JPEG_QUALITY옵션은 JPEG로 저장을 할 때 Quality를 얼마나 유지할 것인지 결정한다. 범위는 0~100(값이 클수록 높은 Quality를 유지), default=95로 되어있다. <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0983218a-ea68-4624-a797-6cfe7969f71a" class="code"><code class="language-Python">cv2.imwrite(&#x27;Lena2.jpg&#x27;, img, [cv2.IMWRITE_JPEG_QUALITY, 100])</code></pre><figure id="d3cf917f-a53e-4e37-a62f-d04b39ee8e83" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Lena2.jpg"><img style="width:288px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Lena2.jpg"/></a></figure><figure id="3dceecae-dce5-4c6d-a020-eab76d58277b" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%207.png"><img style="width:652.0170288085938px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%207.png"/></a></figure><ul id="9ecd24b4-2f81-4905-b905-5ca47a8a9948" class="bulleted-list"><li style="list-style-type:circle">100일 때 Lena2.jpg로 저장을 할 때, 용량이 182.0 kB이다.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c3162581-5ba4-4470-8ea9-57e790620a3f" class="code"><code class="language-Python">cv2.imwrite(&#x27;Lena2.jpg&#x27;, img, [cv2.IMWRITE_JPEG_QUALITY, 10])</code></pre><figure id="e2780d07-5a3c-4e87-9bdf-02dc3bed5b15" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Lena2%201.jpg"><img style="width:288px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Lena2%201.jpg"/></a></figure><figure id="a334a2f7-d9b1-40b5-a5eb-702a306e202f" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%208.png"><img style="width:652.0170288085938px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%208.png"/></a></figure><ul id="06307620-90ee-474d-9ff4-6ad36d03637b" class="bulleted-list"><li style="list-style-type:circle">10일 때 Lena2.jpg로 저장을 할 때, 용량이 9.6 kB으로 100일 때보다 크게 줄고 화질이 떨어진 것을 확인할 수 있다.</li></ul></li></ul></li></ol><figure id="570567e7-8bc7-45c7-a1cd-c24d1b8fc256"><a href="https://docs.opencv.org/3.4/d8/d6a/group__imgcodecs__flags.html#gga292d81be8d76901bff7988d18d2b42aca947af22db2cf6f1f482289b0985b09ec" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">OpenCV: Flags used for image file reading and writing</div><div class="bookmark-description">If set, return the loaded image as is (with alpha channel, otherwise it gets cropped). Ignore EXIF orientation.</div></div><div class="bookmark-href"><img src="https://docs.opencv.org/3.4/opencv.ico" class="icon bookmark-icon"/>https://docs.opencv.org/3.4/d8/d6a/group__imgcodecs__flags.html#gga292d81be8d76901bff7988d18d2b42aca947af22db2cf6f1f482289b0985b09ec</div></div></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5d1731e9-3bf4-4607-9233-3954e4650c4d" class="code"><code class="language-Python">import cv2
+
+img = cv2.imread(&#x27;Lena.png&#x27;)
+
+cv2.imwrite(&#x27;Lena1.png&#x27;, img, [cv2.IMWRITE_PNG_COMPRESSION, 9])
+cv2.imwrite(&#x27;Lena2.jpg&#x27;, img, [cv2.IMWRITE_JPEG_QUALITY, 100])</code></pre><p id="c6754c27-6ea7-44a2-8ab1-6989129297d0" class="">
+</p><h2 id="5483b2a8-bf1b-4581-858a-a1f31b2ec557" class="">P3.</h2><p id="3acea451-f99f-46f2-a1b2-adf559e7d142" class="">[color space] 컬러 스페이스에 대한 내용이다. </p><figure id="cda77706-4c68-452b-9aeb-b257a1134a27" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%209.png"><img style="width:200px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%209.png"/></a></figure><ol type="1" id="f78ecef7-f037-4d20-832e-16e651a5e062" class="numbered-list" start="1"><li>다음 사진처럼 각 색상 별 영역이 50 x 50화소가 되도록 numpy 배열을 생성하고 이를 화면에 출력하는 프로그램을 자하여 생성해보라. 각 색상은 첫 줄은 Black, Red, Green, Blue이고 두번째 줄은 White, Cyan, Yellow, Magenta이다.<figure id="4087fcd1-ef72-4550-a2c2-bfdd04ac34d4" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%2010.png"><img style="width:336px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%2010.png"/></a></figure></li></ol><ol type="1" id="e584cac3-632c-4e67-b8db-b26d1b1ddce0" class="numbered-list" start="2"><li>위의 내용을 opencv 함수를 사용하여 Gray 이미지로 변환하고 화면에 출력하라. 각 컬러들이 어떤 값을 갖는지도 확인하여 적어라.<figure id="64e9c10e-6281-4ebe-a10a-c08867e2cbf1" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%2011.png"><img style="width:336px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%2011.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f8eee052-9048-453f-9b99-99423cd2021e" class="code"><code class="language-Python">Gray scale values : 
+ [[  0  29 150  76]
+ [255 179 226 105]]</code></pre></li></ol><ol type="1" id="477608fe-0022-47cb-84db-57095e57733f" class="numbered-list" start="3"><li>위 Gray 로 변환된 결과를 보고 RGB채널값과 gray (명도) 값의 상관관계를 유추해보라.<figure id="135860dd-4f49-4a78-9912-081f0906fa9d" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%2012.png"><img style="width:384px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%2012.png"/></a></figure><p id="8920688f-8145-468c-bab3-f55689e6a505" class="">⇒ Gray scale values :   </p><p id="816e6f4d-a888-4eed-83c0-36139b91d352" class="">[[  0  29 150  76]  </p><p id="ae6aea5f-ce63-42c5-a812-6360166c2974" class=""> [255 179 226 105]]</p><p id="afac8591-c17c-439c-8ace-6d141b13edf6" class="">
+</p><p id="b0d4829f-6ef9-4860-8ffc-9737b0e37e47" class="">RGB to Gray-Scale Formula : <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mn>0.299</mn><mo>∗</mo><mi>R</mi><mo>+</mo><mn>0.587</mn><mo>∗</mo><mi>G</mi><mo>+</mo><mn>0.114</mn><mo>∗</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">G = 0.299 * R + 0.587 * G + 0.114 * B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.299</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.587</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.114</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span><span>﻿</span></span></p><p id="027e17c5-e609-45ee-aaa3-30537c9c8d2a" class="">
+</p><p id="4f0c2da7-620b-4b9c-9832-22786feb28cd" class="">(Black) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>B</mi><mi>l</mi><mi>a</mi><mi>c</mi><mi>k</mi></mrow></msub><mo>=</mo><mn>0.299</mn><mo>∗</mo><mn>0</mn><mo>+</mo><mn>0.587</mn><mo>∗</mo><mn>0</mn><mo>+</mo><mn>0.114</mn><mo>∗</mo><mn>0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">G_{Black} = 0.299 * 0 + 0.587 * 0 + 0.114 * 0 = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">Bl</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.299</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.587</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.114</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span><span>﻿</span></span></p><p id="9cb91243-1d37-48e1-990b-0794e0989e5b" class="">(Blue) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>B</mi><mi>l</mi><mi>u</mi><mi>e</mi></mrow></msub><mo>=</mo><mn>0.299</mn><mo>∗</mo><mn>0</mn><mo>+</mo><mn>0.587</mn><mo>∗</mo><mn>0</mn><mo>+</mo><mn>0.114</mn><mo>∗</mo><mn>255</mn><mo>=</mo><mn>29.07</mn></mrow><annotation encoding="application/x-tex">G_{Blue} = 0.299 * 0 + 0.587 * 0 + 0.114 * 255 = 29.07</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">Bl</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.299</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.587</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.114</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">29.07</span></span></span></span></span><span>﻿</span></span></p><p id="d23ac802-668e-49b9-9df8-fc8850715989" class="">(Green) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>G</mi><mi>r</mi><mi>e</mi><mi>e</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>0.299</mn><mo>∗</mo><mn>0</mn><mo>+</mo><mn>0.587</mn><mo>∗</mo><mn>255</mn><mo>+</mo><mn>0.114</mn><mo>∗</mo><mn>0</mn><mo>=</mo><mn>149.685</mn></mrow><annotation encoding="application/x-tex">G_{Green} = 0.299 * 0 + 0.587 * 255 + 0.114 * 0 = 149.685</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">G</span><span class="mord mathnormal mtight">ree</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.299</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.587</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.114</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">149.685</span></span></span></span></span><span>﻿</span></span></p><p id="6e1fd4da-927e-46ff-833a-112b53e9d973" class="">(Red) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>R</mi><mi>e</mi><mi>d</mi></mrow></msub><mo>=</mo><mn>0.299</mn><mo>∗</mo><mn>255</mn><mo>+</mo><mn>0.587</mn><mo>∗</mo><mn>0</mn><mo>+</mo><mn>0.114</mn><mo>∗</mo><mn>0</mn><mo>=</mo><mn>76.245</mn></mrow><annotation encoding="application/x-tex">G_{Red} = 0.299 * 255 + 0.587 * 0 + 0.114 * 0 = 76.245</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.299</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.587</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.114</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">76.245</span></span></span></span></span><span>﻿</span></span></p><p id="f99281b3-dd8f-4a22-92ad-81904ca2da06" class="">(White) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>W</mi><mi>h</mi><mi>i</mi><mi>t</mi><mi>e</mi></mrow></msub><mo>=</mo><mn>0.299</mn><mo>∗</mo><mn>255</mn><mo>+</mo><mn>0.587</mn><mo>∗</mo><mn>255</mn><mo>+</mo><mn>0.114</mn><mo>∗</mo><mn>255</mn><mo>=</mo><mn>255</mn></mrow><annotation encoding="application/x-tex">G_{White} = 0.299 * 255 + 0.587 * 255 + 0.114 * 255 = 255</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">Whi</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.299</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.587</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.114</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">255</span></span></span></span></span><span>﻿</span></span></p><p id="2bb8704c-19f0-4d98-a066-66b725762876" class="">(Cyan) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>C</mi><mi>y</mi><mi>a</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>0.299</mn><mo>∗</mo><mn>0</mn><mo>+</mo><mn>0.587</mn><mo>∗</mo><mn>255</mn><mo>+</mo><mn>0.114</mn><mo>∗</mo><mn>255</mn><mo>=</mo><mn>178.755</mn></mrow><annotation encoding="application/x-tex">G_{Cyan} = 0.299 * 0 + 0.587 * 255 + 0.114 * 255 = 178.755</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="mord mathnormal mtight">an</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.299</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.587</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.114</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">178.755</span></span></span></span></span><span>﻿</span></span></p><p id="53b6635f-9846-4261-8715-cb84550bf759" class="">(Yellow) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>Y</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>o</mi><mi>w</mi></mrow></msub><mo>=</mo><mn>0.299</mn><mo>∗</mo><mn>255</mn><mo>+</mo><mn>0.587</mn><mo>∗</mo><mn>255</mn><mo>+</mo><mn>0.114</mn><mo>∗</mo><mn>0</mn><mo>=</mo><mn>225.93</mn></mrow><annotation encoding="application/x-tex">G_{Yellow} = 0.299 * 255 + 0.587 * 255 + 0.114 * 0 = 225.93</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">Y</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.299</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.587</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.114</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">225.93</span></span></span></span></span><span>﻿</span></span></p><p id="23a4ab2f-b1f9-497f-b758-7098d2947ad3" class="">(Magenta) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>M</mi><mi>a</mi><mi>g</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>a</mi></mrow></msub><mo>=</mo><mn>0.299</mn><mo>∗</mo><mn>255</mn><mo>+</mo><mn>0.587</mn><mo>∗</mo><mn>0</mn><mo>+</mo><mn>0.114</mn><mo>∗</mo><mn>255</mn><mo>=</mo><mn>105.315</mn></mrow><annotation encoding="application/x-tex">G_{Magenta} = 0.299 * 255 + 0.587 * 0 + 0.114 * 255 = 105.315</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.299</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.587</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.114</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">255</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">105.315</span></span></span></span></span><span>﻿</span></span></p><p id="d6d40c2f-600c-4c7e-8580-cda8e1324f45" class="">
+</p></li></ol><ol type="1" id="51c28f33-83e2-471a-9a24-29094218254a" class="numbered-list" start="4"><li>다시 원 영상을 RGB 영상을 HSV로 변환한 후 색상값이 어떻게 변환이 됬는지 확인하여 적어라. 위 변환 결과는 수업시간에 배운 공식과 일치하는가?<figure id="aef626ab-11b6-4c73-9ddc-f93d90ee1789" class="image"><a href="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%2012.png"><img style="width:336px" src="HW_1%2019101787%20%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AE%E1%86%AB%20d3b5261936e74a26b720aa7a30ead025/Untitled%2012.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5c41f407-d239-466c-904a-de9687eaf39b" class="code"><code class="language-Python">HSV scale values :
+[[0, 0, 0], [120, 255, 255], [60, 255, 255], [0, 255, 255]]
+[[0, 0, 255], [90, 255, 255], [30, 255, 255], [150, 255, 255]]</code></pre><p id="1277e7af-aa61-4f18-85fa-64ef283ad258" class="">
+</p><p id="18bdabb0-1817-4da0-a4c3-131f29740e90" class="">(Black) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mrow><mi>B</mi><mi>l</mi><mi>a</mi><mi>c</mi><mi>k</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_{Black} = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">Bl</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span><span>﻿</span></span></p><p id="53455583-2263-4772-afc3-155c8bb15b80" class="">(Blue) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mrow><mi>B</mi><mi>l</mi><mi>u</mi><mi>e</mi></mrow></msub><mo>=</mo><mn>60</mn><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">(</mo><mn>4</mn><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>R</mi><mo>−</mo><mi>G</mi></mrow><mrow><mi>max</mi><mo>⁡</mo><mo>−</mo><mi>min</mi><mo>⁡</mo></mrow></mfrac></mstyle><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">)</mo><mo>=</mo><mn>240</mn><mo separator="true">,</mo><mtext>  </mtext><mtext>if </mtext><mi>max</mi><mo>⁡</mo><mo>=</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">H_{Blue} = 60 \Bigg(4+\dfrac{R-G}{\max - \min} \Bigg) = 240, \;\text{if } \max = B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">Bl</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord">60</span><span class="mord"><span class="delimsizing size4">(</span></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">max</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">min</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">G</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="delimsizing size4">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">240</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">if </span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span><span>﻿</span></span></p><p id="258a4555-e6d3-4045-b3e1-90e6ac2c124e" class="">(Green) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mrow><mi>G</mi><mi>r</mi><mi>e</mi><mi>e</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>60</mn><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">(</mo><mn>2</mn><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>B</mi><mo>−</mo><mi>R</mi></mrow><mrow><mi>max</mi><mo>⁡</mo><mo>−</mo><mi>min</mi><mo>⁡</mo></mrow></mfrac></mstyle><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">)</mo><mo>=</mo><mn>120</mn><mo separator="true">,</mo><mtext>  </mtext><mtext>if </mtext><mi>max</mi><mo>⁡</mo><mo>=</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">H_{Green} = 60 \Bigg(2+\dfrac{B-R}{\max - \min} \Bigg) = 120,\; \text{if } \max = G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">G</span><span class="mord mathnormal mtight">ree</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord">60</span><span class="mord"><span class="delimsizing size4">(</span></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">max</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">min</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="delimsizing size4">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">120</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">if </span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span></span><span>﻿</span></span></p><p id="894340c5-773a-48ff-80e7-7bb15dafa109" class="">(Red) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mrow><mi>R</mi><mi>e</mi><mi>d</mi></mrow></msub><mo>=</mo><mn>60</mn><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">(</mo><mn>0</mn><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>G</mi><mo>−</mo><mi>B</mi></mrow><mrow><mi>max</mi><mo>⁡</mo><mo>−</mo><mi>min</mi><mo>⁡</mo></mrow></mfrac></mstyle><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">)</mo><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mtext>  </mtext><mtext>if </mtext><mi>max</mi><mo>⁡</mo><mo>=</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">H_{Red} = 60 \Bigg(0+\dfrac{G-B}{\max - \min} \Bigg) = 0, \;\text{if } \max = B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord">60</span><span class="mord"><span class="delimsizing size4">(</span></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">max</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">min</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="delimsizing size4">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">if </span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span><span>﻿</span></span></p><p id="9e39e447-05b6-40fe-8aca-e41bacd89d83" class="">(White) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mrow><mi>W</mi><mi>h</mi><mi>i</mi><mi>t</mi><mi>e</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H_{White} = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">Whi</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span><span>﻿</span></span></p><p id="4b93ea74-37b8-4810-bac4-d485ad11ebc5" class="">(Cyan) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mrow><mi>C</mi><mi>y</mi><mi>a</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>60</mn><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">(</mo><mn>2</mn><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>255</mn><mo>−</mo><mn>0</mn></mrow><mn>255</mn></mfrac></mstyle><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">)</mo><mo>=</mo><mn>180</mn><mo separator="true">,</mo><mtext>  </mtext><mtext>if </mtext><mi>max</mi><mo>⁡</mo><mo>=</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">H_{Cyan} = 60 \Bigg(2+\dfrac{255-0}{255} \Bigg) = 180, \;\text{if } \max = G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="mord mathnormal mtight">an</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord">60</span><span class="mord"><span class="delimsizing size4">(</span></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">255</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">255</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="delimsizing size4">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">180</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">if </span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span></span><span>﻿</span></span></p><p id="f0bcb938-6abb-4a9c-90c9-625add89b918" class="">(Yellow) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mrow><mi>Y</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>o</mi><mi>w</mi></mrow></msub><mo>=</mo><mn>60</mn><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">(</mo><mn>0</mn><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>255</mn><mo>−</mo><mn>0</mn></mrow><mn>255</mn></mfrac></mstyle><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">)</mo><mo>=</mo><mn>60</mn><mo separator="true">,</mo><mtext>  </mtext><mtext>if </mtext><mi>max</mi><mo>⁡</mo><mo>=</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">H_{Yellow} = 60 \Bigg(0+\dfrac{255-0}{255} \Bigg) = 60, \;\text{if } \max = R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">Y</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord">60</span><span class="mord"><span class="delimsizing size4">(</span></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">255</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">255</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="delimsizing size4">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">60</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">if </span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span></span><span>﻿</span></span></p><p id="61cef070-dc48-4287-8f42-56ceb63d6d41" class="">(Magenta) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>M</mi><mi>a</mi><mi>g</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>a</mi></mrow></msub><mo>=</mo><mn>60</mn><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">(</mo><mn>0</mn><mo>+</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>0</mn><mo>−</mo><mn>255</mn></mrow><mn>255</mn></mfrac></mstyle><mo fence="false" stretchy="true" minsize="3em" maxsize="3em">)</mo><mo>=</mo><mo>−</mo><mn>60</mn><mo>⇒</mo><mn>360</mn><mo>−</mo><mn>60</mn><mo>=</mo><mn>300</mn><mo separator="true">,</mo><mtext>  </mtext><mtext>if </mtext><mi>max</mi><mo>⁡</mo><mo>=</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">G_{Magenta} = 60 \Bigg(0+\dfrac{0-255}{255} \Bigg) = -60 \Rightarrow 360-60=300, \;\text{if } \max = R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord">60</span><span class="mord"><span class="delimsizing size4">(</span></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">255</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">255</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="delimsizing size4">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">60</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">360</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">60</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">300</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">if </span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span></span><span>﻿</span></span></p><p id="9158137d-0fe5-470a-b13c-f0c73e28c81e" class="">이때, OpenCV에서는 1 Byte(uint8)의 범위를 갖으므로 계산식으로 나온 값에 2를 나눠주면 출력된 값이 나오는 것을 확인할 수 있다. 따라서 수업에서 배운 공식과 일치하는 것을 확인할 수 있다.</p><p id="9548494f-a428-473a-9730-7b8e36fc6471" class="">
+</p></li></ol><ol type="1" id="4032936d-96bc-4af5-8b65-9a9c40f126e2" class="numbered-list" start="5"><li>(보너스 문제) 수업시간에 RGB2HSV 공식을 배웠다. HSV2RGB 공식을 유도해 보라.<p id="db624a61-28d2-473e-b895-4efac43f1a3a" class="">중간 매개 변수가 필요하다.</p><p id="ba4427a9-afa8-4eae-986c-4e105f88ffca" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mi>V</mi><mo>×</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">C = V \times S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></span><span>﻿</span></span></p><p id="32164061-c9a1-41a5-ad63-6d334d0738ff" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>C</mi><mo>×</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi mathvariant="normal">∣</mi><mi>h</mi><mi mathvariant="normal">/</mi><mn>6</mn><msup><mn>0</mn><mo>∘</mo></msup><mspace></mspace><mspace width="0.6667em"/><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mtext> </mtext><mtext> </mtext><mn>2</mn><mo>−</mo><mn>1</mn><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">X = C \times (1-|h / 60 ^\circ \mod 2 -1|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal">h</span><span class="mord">/6</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6741em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∘</span></span></span></span></span></span></span></span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.6667em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1∣</span></span></span></span></span><span>﻿</span></span></p><p id="a80ae328-6ff9-4308-b9e2-1539bf51ca59" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>V</mi><mo>−</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">m = V - C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span><span>﻿</span></span></p><p id="7031a625-093b-44f7-92d9-e69fe9e4bd1f" class="">
+</p><p id="69cd7b8b-d7f5-44ec-a26d-b56465ddf424" class="">위 매개 변수로 임시 <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mo mathvariant="normal">′</mo></msup><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup><msup><mi>B</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">R^\prime G^\prime B^\prime</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> 를 구성한다. </p><p id="896d16c1-0899-4d11-9868-342b599c31ff" class="">(<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mo mathvariant="normal">′</mo></msup><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup><msup><mi>B</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">R^\prime G^\prime B^\prime</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>) <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo stretchy="false">(</mo><mi>C</mi><mo separator="true">,</mo><mi>X</mi><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>0</mn><mo>≤</mo><mi>H</mi><mo>&lt;</mo><mn>60</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo separator="true">,</mo><mi>C</mi><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>60</mn><mo>≤</mo><mi>H</mi><mo>&lt;</mo><mn>120</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mi>C</mi><mo separator="true">,</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>120</mn><mo>≤</mo><mi>H</mi><mo>&lt;</mo><mn>180</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mi>X</mi><mo separator="true">,</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>180</mn><mo>≤</mo><mi>H</mi><mo>&lt;</mo><mn>240</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>240</mn><mo>≤</mo><mi>H</mi><mo>&lt;</mo><mn>300</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo stretchy="false">(</mo><mi>C</mi><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>300</mn><mo>≤</mo><mi>H</mi><mo>&lt;</mo><mn>360</mn></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">= \begin{cases} (C, X, 0) &amp; 0 \leq H &lt;60  \\ (X, C, 0) &amp; 60 \leq H &lt;120  \\(0, C, X) &amp; 120 \leq H &lt;180  \\(0, X, C) &amp; 180 \leq H &lt;240  \\(X, 0, C) &amp; 240 \leq H &lt;300  \\(C, 0, X) &amp; 300 \leq H &lt;360  \end{cases}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:8.64em;vertical-align:-4.07em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.45em;"><span style="top:-1.366em;"><span class="pstrut" style="height:4.416em;"></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:-1.358em;"><span class="pstrut" style="height:4.416em;"></span><span style="height:2.416em;width:0.8889em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.8889em' height='2.416em' style='width:0.8889em' viewBox='0 0 888.89 2416' preserveAspectRatio='xMinYMin'><path d='M384 0 H504 V2416 H384z M384 0 H504 V2416 H384z'/></svg></span></span><span style="top:-4.416em;"><span class="pstrut" style="height:4.416em;"></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-5.558em;"><span class="pstrut" style="height:4.416em;"></span><span style="height:2.416em;width:0.8889em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.8889em' height='2.416em' style='width:0.8889em' viewBox='0 0 888.89 2416' preserveAspectRatio='xMinYMin'><path d='M384 0 H504 V2416 H384z M384 0 H504 V2416 H384z'/></svg></span></span><span style="top:-7.966em;"><span class="pstrut" style="height:4.416em;"></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.95em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.57em;"><span style="top:-6.57em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span><span style="top:-5.13em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mclose">)</span></span></span><span style="top:-0.81em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mclose">)</span></span></span><span style="top:0.63em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:4.07em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.57em;"><span style="top:-6.57em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">60</span></span></span><span style="top:-5.13em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">60</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">120</span></span></span><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">120</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">180</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">180</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">240</span></span></span><span style="top:-0.81em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">240</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">300</span></span></span><span style="top:0.63em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">300</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">360</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:4.07em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span><span>﻿</span></span></p><p id="79f539ad-f400-4ed2-b943-f101c5b31320" class="">최종적으로</p><p id="0a89b37a-d5d4-48da-a573-97c5d09f0e82" class=""><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>R</mi><mo separator="true">,</mo><mi>G</mi><mo separator="true">,</mo><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mo stretchy="false">(</mo><msup><mi>R</mi><mo mathvariant="normal">′</mo></msup><mo>+</mo><mi>m</mi><mo stretchy="false">)</mo><mo>×</mo><mn>255</mn><mo separator="true">,</mo><mo stretchy="false">(</mo><msup><mi>G</mi><mo mathvariant="normal">′</mo></msup><mo>+</mo><mi>m</mi><mo stretchy="false">)</mo><mo>×</mo><mn>255</mn><mo separator="true">,</mo><mo stretchy="false">(</mo><msup><mi>B</mi><mo mathvariant="normal">′</mo></msup><mo>+</mo><mi>m</mi><mo stretchy="false">)</mo><mo>×</mo><mn>255</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(R, G, B) =((R^\prime +m)\times255, (G^\prime +m)\times255, (B^\prime +m)\times255)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">G</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mopen">((</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord">255</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord">255</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">255</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span></p></li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="53b4d1b5-2b4a-4026-887f-855269b7e8d5" class="code"><code class="language-Python">import numpy as np
+import matplotlib.pyplot as plt
+import cv2
+
+
+class P3:
+    def __init__(self):
+        # 색상 정의
+        self.colors = [
+            [0, 0, 0],  # Black
+            [0, 0, 1],  # Blue
+            [0, 1, 0],  # Green
+            [1, 0, 0],  # Red
+            [1, 1, 1],  # White
+            [0, 1, 1],  # Cyan
+            [1, 1, 0],  # Yellow
+            [1, 0, 1]   # Magenta
+        ]
+        self.image = np.ones([100, 200, 3], dtype=np.uint8)
+
+    def make_image(self):
+        for i, color in enumerate(self.colors):
+            row = i // 4
+            col = i % 4
+            start_row = row * 50
+            start_col = col * 50
+            self.image[start_row:start_row + 50, start_col:start_col + 50, :] = np.array(color) * 255
+
+        cv2.imwrite(&#x27;color_image.png&#x27;, cv2.cvtColor(self.image, cv2.COLOR_RGB2BGR))
+
+        plt.figure(figsize=(10, 5))
+        plt.imshow(self.image)
+        plt.show()
+
+    def make_gray_image(self):
+        im_gray = cv2.cvtColor(cv2.imread(&#x27;color_image.png&#x27;), cv2.COLOR_BGR2GRAY)
+
+        cv2.imwrite(&#x27;gray_image.png&#x27;, im_gray)
+
+        plt.figure(figsize=(10, 5))
+        plt.imshow(im_gray, cmap=&#x27;gray&#x27;)
+        plt.show()
+
+        values_0, indices_0 = np.unique(im_gray[:50], return_index=True)
+        sorted_values_0 = values_0[np.argsort(indices_0)]
+        values_1, indices_1 = np.unique(im_gray[50:], return_index=True)
+        sorted_values_1 = values_1[np.argsort(indices_1)]
+        print(&#x27;Gray scale values : \n&#x27;, np.array([sorted_values_0, sorted_values_1]))
+
+    def rgb2hsv_image(self):
+        # RGB 이미지를 HSV로 변환
+        im_rgb = cv2.imread(&#x27;color_image.png&#x27;, cv2.IMREAD_COLOR)
+        im_hsv = cv2.cvtColor(im_rgb, cv2.COLOR_BGR2HSV)
+        # HSV 값 출력
+        a = []
+        b = []
+        for i in [0, 50, 100, 150]:
+            h_0, s_0, v_0 = im_hsv[0, i, 0], im_hsv[0, i, 1], im_hsv[0, i, 2]
+            a.append([h_0, s_0, v_0])
+            h_1, s_1, v_1 = im_hsv[50, i, 0], im_hsv[50, i, 1], im_hsv[50, i, 2]
+            b.append([h_1, s_1, v_1])
+        print(&quot;HSV scale values : \n&quot;, a, &#x27;\n&#x27;, b)
+
+
+# 클래스 인스턴스 생성
+p = P3()
+# 함수 호출
+p.make_image()
+p.make_gray_image()
+p.rgb2hsv_image()</code></pre><p id="075a38a8-54b5-42fa-b885-0660388f45a9" class="">
+</p><p id="b0c0340d-264a-4879-a1d9-6726212062df" class="">
+</p><h2 id="27898e12-7cbd-4cd5-ad5f-6512b5b16a0d" class="">P4.</h2><p id="053bb06a-6671-40ac-b813-8031a81ee267" class="">(speedup) 영상 처리를 하는 경우, 데이터를 반복문을 사용하여 원소 단위로 처리하게 되면 스크립트 방식으로 처리되므로 계산 시간이 오래 걸린다. 이를 해결하기 위한 방식이 벅터화 연산이다. Numpy는 벡터화를 지원하기위하여 원소 접근의 index 방식과 broadcasting 등을 지원한다. 수업에서 배운 방식을 이용하여 다음을 가속하여 보라.</p><div id="55bae37d-1cce-49f9-bebc-e046f389380c" class="column-list"><div id="07852d7a-b913-45b6-b8c2-970e86b5a134" style="width:50%" class="column"><p id="196c2222-3e1f-47f6-a554-9284850705b2" class="">Element-wise</p><hr id="a0549632-10f0-4108-8beb-afe8369e57f7"/></div><div id="8465bed6-7edd-4970-9e6e-c54c8f9f5ab0" style="width:50%" class="column"><p id="05ed4df2-8e2f-4ea4-af8a-8bc2112562b0" class="">Vector-wise</p><hr id="a51a4f8c-8da1-41a3-b43f-193a8515a6cf"/></div></div><div id="ce709aa0-b879-4d1e-ba41-acd38409e4eb" class="column-list"><div id="70cf10f5-d038-4716-b423-1c1c7fd600ba" style="width:50%" class="column"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="eb347c9c-6ab1-40a5-b4d3-900c58a63c8d" class="code"><code class="language-Python">import cv2
+import numpy as np
+import time
+
+T = 100
+im_bgr = cv2.imread(&#x27;Lena.png&#x27;)
+if im_bgr is None:
+    print(&#x27;Cannot find file&#x27;)
+    exit()
+im_gray = cv2.cvtColor(im_bgr, cv2.COLOR_BGR2GRAY)
+
+im_bin = np.zeros_like(im_gray)
+start_time = time.time()
+for v in range(im_gray.shape[0]):
+    for h in range(im_gray.shape[1]):
+        if im_gray[v, h] &gt; T:
+            im_bin[v, h] = 255
+
+print(&quot;ex-time 1:&quot;, time.time() - start_time)
+cv2.imwrite(&#x27;output1.jpg&#x27;, im_bin)</code></pre></div><div id="aa73e1c9-4813-46ef-98c6-a70ab95dcc9b" style="width:50%" class="column"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4e5838d0-8544-40cb-a2cb-3ae5f013dfa7" class="code"><code class="language-Python">import cv2
+import numpy as np
+import time
+
+T = 100
+im_bgr = cv2.imread(&#x27;Lena.png&#x27;)
+if im_bgr is None:
+    print(&#x27;Cannot find file&#x27;)
+    exit()
+im_gray = cv2.cvtColor(im_bgr, cv2.COLOR_BGR2GRAY)
+
+start_time = time.time()
+im_bin = np.where(im_gray &gt; T, 255, 0)
+print(&quot;ex-time 2:&quot;, time.time()-start_time)
+
+cv2.imwrite(&#x27;output2.jpg&#x27;, im_bin)</code></pre><p id="1e5bec03-8311-47d0-b2ae-3cfc690d31b4" class="">
+</p></div></div><p id="28987721-b230-44eb-987d-dd2822a52529" class="">
+</p><p id="daab3484-bbf1-430d-927f-916033977ae5" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
